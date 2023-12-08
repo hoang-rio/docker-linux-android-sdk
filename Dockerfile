@@ -11,7 +11,7 @@ ENV PATH ${PATH}:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:${PATH
 ENV ANDROID_NDK /opt/android-ndk-linux
 ENV ANDROID_NDK_HOME /opt/android-ndk-linux
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt update && apt install -y --no-install-recommends \
 	unzip \
 	wget \
 	gnupg2 \
@@ -29,3 +29,9 @@ RUN cd /opt/android-sdk-linux && \
 	"build-tools;30.0.3" \
 	"platforms;android-32" && \
 	sdkmanager --sdk_root=${ANDROID_HOME} "cmake;3.6.4111459"
+RUN cd /opt &&\
+	wget -q --output-document=android-ndk.zip https://dl.google.com/android/repository/android-ndk-r23b-linux.zip && \
+	unzip android-ndk.zip && \
+	rm -f android-ndk.zip && \
+	mv android-ndk-r23b android-ndk-linux
+RUN apt remove -y build-essential git && apt autoremove -y
