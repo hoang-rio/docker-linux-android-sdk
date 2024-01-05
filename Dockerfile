@@ -29,3 +29,4 @@ RUN cd /opt/android-sdk-linux && \
 	"build-tools;33.0.2" \
 	"platforms;android-33" && \
 	sdkmanager --sdk_root=${ANDROID_HOME} "cmake;3.22.1"
+RUN apt remove -y build-essential git wget unzip && apt autoremove -y
