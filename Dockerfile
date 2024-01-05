@@ -30,8 +30,8 @@ RUN cd /opt/android-sdk-linux && \
 	"platforms;android-33" && \
 	sdkmanager --sdk_root=${ANDROID_HOME} "cmake;3.22.1"
 RUN cd /opt &&\
-	wget -q --output-document=android-ndk.zip https://dl.google.com/android/repository/android-ndk-r23b-linux.zip && \
+	wget -q --output-document=android-ndk.zip https://dl.google.com/android/repository/android-ndk-r26b-linux.zip && \
 	unzip android-ndk.zip && \
 	rm -f android-ndk.zip && \
-	mv android-ndk-r23b android-ndk-linux
+	mv android-ndk-r26b android-ndk-linux
 RUN apt remove -y build-essential git && apt autoremove -y
