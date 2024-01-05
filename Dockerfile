@@ -21,14 +21,14 @@ RUN git clone https://github.com/StackExchange/blackbox \
 	&& cd blackbox \
 	&& make manual-install
 RUN cd /opt/android-sdk-linux && \
-	wget -q --output-document=sdk-tools.zip https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip && \
+	wget -q --output-document=sdk-tools.zip https://dl.google.com/android/repository/commandlinetools-linux-10406996_latest.zip && \
 	unzip sdk-tools.zip && \
 	rm -f sdk-tools.zip && \
-	echo y | sdkmanager --sdk_root=${ANDROID_HOME} "build-tools;33.0.0" \
-	"platforms;android-33" \
-	"build-tools;30.0.3" \
-	"platforms;android-32" && \
-	sdkmanager --sdk_root=${ANDROID_HOME} "cmake;3.6.4111459"
+	echo y | sdkmanager --sdk_root=${ANDROID_HOME} "build-tools;34.0.0" \
+	"platforms;android-34" \
+	"build-tools;33.0.2" \
+	"platforms;android-33" && \
+	sdkmanager --sdk_root=${ANDROID_HOME} "cmake;3.22.1"
 RUN cd /opt &&\
 	wget -q --output-document=android-ndk.zip https://dl.google.com/android/repository/android-ndk-r23b-linux.zip && \
 	unzip android-ndk.zip && \
