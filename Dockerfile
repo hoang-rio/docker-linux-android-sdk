@@ -34,4 +34,4 @@ RUN cd /opt &&\
 	unzip android-ndk.zip && \
 	rm -f android-ndk.zip && \
 	mv android-ndk-r26b android-ndk-linux
-RUN apt remove -y build-essential git && apt autoremove -y
+RUN apt remove -y build-essential git wget unzip && apt autoremove -y
