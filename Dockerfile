@@ -1,4 +1,4 @@
-FROM openjdk:21-ea-jdk-slim
+FROM openjdk:21-jdk-slim
 LABEL MAINTAINER="Hoang Rio <hi@hoangnguyendong.dev>"
 
 RUN java -version
