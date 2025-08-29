@@ -1,5 +1,5 @@
-FROM ghcr.io/hoang-rio/docker-linux-android-sdk:jdk17
-LABEL MAINTAINER="Hoang Rio <donghoang.nguyen@outlook.com>"
+FROM ghcr.io/hoang-rio/docker-linux-android-sdk:jdk21
+LABEL MAINTAINER="Hoang Rio <hi@hoangnguyendong.dev>"
 
 RUN apt update && apt install -y --no-install-recommends \
 	unzip \
