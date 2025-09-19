@@ -26,7 +26,7 @@ RUN cd /opt/android-sdk-linux && \
 	rm -f sdk-tools.zip && \
 	echo y | sdkmanager --sdk_root=${ANDROID_HOME} "build-tools;36.0.0" \
 	"platforms;android-36" \
-	"build-tools;34.0.0" \
-	"platforms;android-34" && \
+	"build-tools;35.0.0" \
+	"platforms;android-35" && \
 	sdkmanager --sdk_root=${ANDROID_HOME} "cmake;3.22.1"
 RUN apt remove -y build-essential git wget unzip && apt autoremove -y
