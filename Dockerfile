@@ -10,6 +10,7 @@ RUN cd /opt &&\
 	rm -f android-ndk.zip && \
 	mv android-ndk-r28 android-ndk-linux
 RUN apt remove -y wget unzip && apt autoremove -y
+RUN apt-get update && apt-get install -y perl && apt autoremove -y
 
 ENV ANDROID_NDK_ROOT=/opt/android-ndk-linux
 ENV PATH=$PATH:$ANDROID_NDK_ROOT
