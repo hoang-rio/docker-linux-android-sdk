@@ -11,10 +11,13 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
+concurrency:
+  group: build_docker_image_${{ github.ref_name }}
+  cancel-in-progress: true
+
 jobs:
 
   build:
-
     runs-on: ubuntu-latest
 
     steps:
