@@ -21,12 +21,14 @@ RUN git clone https://github.com/StackExchange/blackbox \
 	&& cd blackbox \
 	&& make symlinks-install
 RUN cd /opt/android-sdk-linux && \
-	wget -q --output-document=sdk-tools.zip https://dl.google.com/android/repository/commandlinetools-linux-13114758_latest.zip && \
+	wget -q --output-document=sdk-tools.zip https://dl.google.com/android/repository/commandlinetools-linux-14742923_latest.zip && \
 	unzip sdk-tools.zip && \
 	rm -f sdk-tools.zip && \
-	echo y | sdkmanager --sdk_root=${ANDROID_HOME} "build-tools;36.0.0" \
-	"platforms;android-36" \
-	"build-tools;35.0.0" \
-	"platforms;android-35" && \
-	sdkmanager --sdk_root=${ANDROID_HOME} "cmake;3.22.1"
-RUN apt remove -y build-essential git wget unzip && apt autoremove -y
+	echo y | sdkmanager --sdk_root=${ANDROID_HOME} "build-tools;37.0.0" \
+	"platforms;android-37" \
+	"build-tools;36.0.0" \
+	"platforms;android-36" && \
+	sdkmanager --sdk_root=${ANDROID_HOME} "cmake;3.22.1" "ndk;28.2.13676358" && \
+	rm -rf ${ANDROID_NDK_HOME} || true && \
+	ln -s ${ANDROID_HOME}/ndk/28.2.13676358 ${ANDROID_NDK_HOME}
+RUN apt remove -y build-essential wget unzip && apt autoremove -y
