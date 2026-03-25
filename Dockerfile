@@ -8,8 +8,7 @@ WORKDIR /opt
 
 ENV ANDROID_HOME=/opt/android-sdk-linux
 ENV PATH=${PATH}:${ANDROID_HOME}/cmdline-tools/bin:${ANDROID_HOME}/platform-tools
-ENV ANDROID_NDK=/opt/android-ndk-linux
-ENV ANDROID_NDK_HOME=/opt/android-ndk-linux
+
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
 	unzip \
@@ -28,7 +27,5 @@ RUN cd /opt/android-sdk-linux && \
 	"platforms;android-37" \
 	"build-tools;36.0.0" \
 	"platforms;android-36" && \
-	sdkmanager --sdk_root=${ANDROID_HOME} "cmake;3.22.1" "ndk;28.2.13676358" && \
-	rm -rf ${ANDROID_NDK_HOME} || true && \
-	ln -s ${ANDROID_HOME}/ndk/28.2.13676358 ${ANDROID_NDK_HOME}
+	sdkmanager --sdk_root=${ANDROID_HOME} "cmake;3.22.1"
 RUN apt remove -y build-essential wget unzip && apt autoremove -y
