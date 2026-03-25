@@ -1,16 +1,9 @@
 FROM ghcr.io/hoang-rio/docker-linux-android-sdk:jdk21
 LABEL MAINTAINER="Hoang Rio <hi@hoangnguyendong.dev>"
 
-RUN apt update && apt install -y --no-install-recommends \
-	unzip \
-	wget
-RUN cd /opt &&\
-	wget -q --output-document=android-ndk.zip https://dl.google.com/android/repository/android-ndk-r28-linux.zip && \
-	unzip android-ndk.zip && \
-	rm -f android-ndk.zip && \
-	mv android-ndk-r28 android-ndk-linux
-RUN apt remove -y wget unzip && apt autoremove -y
-RUN apt-get update && apt-get install -y perl build-essential && apt autoremove -y
+ENV NDK_VERSION=28.2.13676358
 
-ENV ANDROID_NDK_ROOT=/opt/android-ndk-linux
+RUN echo y | cd ${ANDROID_HOME} && sdkmanager --sdk_root=${ANDROID_HOME} "ndk;${NDK_VERSION}"
+
+ENV ANDROID_NDK_ROOT=${ANDROID_HOME}/ndk/${NDK_VERSION}
 ENV PATH=$PATH:$ANDROID_NDK_ROOT
