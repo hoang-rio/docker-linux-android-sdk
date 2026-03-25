@@ -1,4 +1,4 @@
-FROM openjdk:21-jdk-slim
+FROM eclipse-temurin:21-jdk
 LABEL MAINTAINER="Hoang Rio <hi@hoangnguyendong.dev>"
 
 RUN java -version
