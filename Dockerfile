@@ -9,7 +9,6 @@ WORKDIR /opt
 ENV ANDROID_HOME=/opt/android-sdk-linux
 ENV PATH=${PATH}:${ANDROID_HOME}/cmdline-tools/bin:${ANDROID_HOME}/platform-tools
 
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
 	unzip \
 	wget \
@@ -19,12 +18,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN git clone https://github.com/StackExchange/blackbox \
 	&& cd blackbox \
 	&& make symlinks-install
-RUN cd /opt/android-sdk-linux && \
+RUN cd ${ANDROID_HOME} && \
 	wget -q --output-document=sdk-tools.zip https://dl.google.com/android/repository/commandlinetools-linux-14742923_latest.zip && \
 	unzip sdk-tools.zip && \
 	rm -f sdk-tools.zip && \
-	echo y | sdkmanager --sdk_root=${ANDROID_HOME} "build-tools;37.0.0" \
-	"platforms;android-37" \
+	echo y | sdkmanager --sdk_root=${ANDROID_HOME} "build-tools;36.1.0" \
+	"platforms;android-36.1" \
 	"build-tools;36.0.0" \
 	"platforms;android-36" && \
 	sdkmanager --sdk_root=${ANDROID_HOME} "cmake;3.22.1"
