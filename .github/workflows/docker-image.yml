@@ -11,14 +11,17 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
+concurrency:
+  group: build_docker_image_${{ github.ref_name }}
+  cancel-in-progress: true
+
 jobs:
 
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - name: Branch name
       run: echo running on branch ${GITHUB_REF##*/}
 
