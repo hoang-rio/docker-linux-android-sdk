@@ -22,7 +22,9 @@ RUN cd ${ANDROID_HOME} && \
 	wget -q --output-document=sdk-tools.zip https://dl.google.com/android/repository/commandlinetools-linux-14742923_latest.zip && \
 	unzip sdk-tools.zip && \
 	rm -f sdk-tools.zip && \
-	echo y | sdkmanager --sdk_root=${ANDROID_HOME} "build-tools;36.1.0" \
+	echo y | sdkmanager --sdk_root=${ANDROID_HOME} "build-tools;37.0.0" \
+	"platforms;android-37" \
+	"build-tools;36.1.0" \
 	"platforms;android-36.1" \
 	"build-tools;36.0.0" \
 	"platforms;android-36" && \
