@@ -23,7 +23,7 @@ RUN cd ${ANDROID_HOME} && \
 	unzip sdk-tools.zip && \
 	rm -f sdk-tools.zip && \
 	echo y | sdkmanager --sdk_root=${ANDROID_HOME} "build-tools;37.0.0" \
-	"platforms;android-37" \
+	"platforms;android-37.0" \
 	"build-tools;36.1.0" \
 	"platforms;android-36.1" \
 	"build-tools;36.0.0" \
