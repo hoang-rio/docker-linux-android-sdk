@@ -19,7 +19,7 @@ RUN git clone https://github.com/StackExchange/blackbox \
 	&& cd blackbox \
 	&& make symlinks-install
 RUN cd ${ANDROID_HOME} && \
-	wget -q --output-document=sdk-tools.zip https://dl.google.com/android/repository/commandlinetools-linux-14742923_latest.zip && \
+	wget -q --output-document=sdk-tools.zip https://dl.google.com/android/repository/commandlinetools-linux-15859902_latest.zip && \
 	unzip sdk-tools.zip && \
 	rm -f sdk-tools.zip && \
 	echo y | sdkmanager --sdk_root=${ANDROID_HOME} "build-tools;37.0.0" \
